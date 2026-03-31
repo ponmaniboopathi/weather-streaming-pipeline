@@ -1,0 +1,31 @@
+
+// View sample records
+weather-table
+| take 10
+
+// Count total records
+weather-table
+| count
+
+// Latest records
+weather-table
+| sort by localtime desc
+| take 5
+
+// Filter by location
+weather-table
+| where name == "Chennai"
+
+// Average temperature
+weather-table
+| summarize avg(temp_c)
+
+// Records per location
+weather-table
+| summarize count() by name
+
+// Time-based aggregation
+weather-table
+| summarize avg(temp_c) by bin(localtime, 1h)
+
+---
